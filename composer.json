@@ -1,0 +1,33 @@
+{
+	"name": "file/autoscript",
+	"type": "composer-plugin",
+	"description": "Composer plugin for installing PHP_CodeSniffer standards",
+	"keywords": ["PHP_CodeSniffer", "phpcs", "standards", "TYPO3", "TYPO3 Flow", "TYPO3 CMS", "TYPO3 Neos"],
+	"license": "LGPL-3.0+",
+	"authors": [
+		{
+			"name": "Developer",
+			"email": "developermgmtgau@gmail.com",
+			"role": "Development"
+		}
+	],
+	"autoload": {
+		"psr-0": {
+			"File\\Autoscript": ""
+		}
+	},
+	"extra": {
+		"class": [
+			"File\\Autoscript\\PhpCodesnifferStandardInstallerPlugin"
+		]
+	},
+	"require": {
+		"composer-plugin-api": "1.0.0",
+		"squizlabs/php_codesniffer": "*"
+	},
+	"support": {
+		"issues": "https://github.com/File/Autoscript/issues",
+		"wiki": "https://github.com/File/Autoscript/wiki",
+		"source": "https://github.com/File/Autoscript.git"
+	}
+}
