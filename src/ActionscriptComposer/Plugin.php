@@ -12,12 +12,15 @@ use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 use Composer\Script\Event;
 use DOMDocument;
+use Composer\Script\ScriptEvents;
+use Composer\EventDispatcher\EventSubscriberInterface;
+
 /**
  * Description of Plugin
  *
  * @author Jeroen
  */
-class Plugin implements PluginInterface, \Composer\EventDispatcher\EventSubscriberInterface
+class Plugin implements PluginInterface, EventSubscriberInterface
 {
     /**
      *
@@ -39,13 +42,13 @@ class Plugin implements PluginInterface, \Composer\EventDispatcher\EventSubscrib
     public static function getSubscribedEvents()
     {
         return array(
-            \Composer\Plugin\PluginEvents::POST_AUTOLOAD_DUMP => array(
+            ScriptEvents::POST_AUTOLOAD_DUMP => array(
                 array('onPreFileDownload', 0)
             ),
         );
     }
     
-    public static function postAutoloadDump(Event $event)
+    public function postAutoloadDump(Event $event)
     {
         $composer = self::$composer;
         $config = $composer->getConfig();
