@@ -15,6 +15,11 @@
 	"require-dev": {
         "composer/composer": "~1.0@dev"
     },
+	"autoload": {
+			"psr-0": {
+				"ActionscriptComposer\\": "src/"
+			}
+		},
 	"extra": {
         "class": "ActionscriptComposer\\Plugin"
     }
