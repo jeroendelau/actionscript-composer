@@ -126,7 +126,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         return $xml;
     }
     
-    protected static function createPathElementsNode(DOMDocument $xml, DomElement $targetNode, $type, $paths)
+    protected static function createPathElementsNode(DOMDocument $xml, \DomElement $targetNode, $type, $paths)
     {
         $sourcepath = $xml->createElement($type);
         $sourcepath->setAttribute("append", "true");
@@ -139,7 +139,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $targetNode->appendChild($sourcepath);
     }
     
-    protected static function createPathElement(DOMDocument $xml, DomElement $targetNode, $path)
+    protected static function createPathElement(DOMDocument $xml, \DomElement $targetNode, $path)
     {
         $pathnode = $xml->createElement("path-elements");
         $pathtext = $xml->createTextNode($path);
