@@ -89,7 +89,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         
         if(!is_array($paths))
         {
-            $paths = [$paths];
+            $paths = Array($paths);
         }
         
         foreach($paths as $path)
