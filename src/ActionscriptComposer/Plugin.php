@@ -43,7 +43,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     {
         return array(
             ScriptEvents::POST_AUTOLOAD_DUMP => array(
-                array('onPreFileDownload', 0)
+                array('postAutoloadDump', 0)
             ),
         );
     }
