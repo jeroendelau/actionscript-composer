@@ -155,7 +155,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     
     protected static function createPathElement(DOMDocument $xml, \DomElement $targetNode, $path)
     {
-        $pathnode = $xml->createElement("path-elements");
+        $pathnode = $xml->createElement("path-element");
         $pathtext = $xml->createTextNode($path);
         $pathnode->appendChild($pathtext);
         $targetNode->appendChild($pathnode);
