@@ -61,33 +61,47 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         
         foreach ($packages as $package)
         {
-            self::getPaths($package, $basePath, $srcPaths, $libPaths);
+            self::getPackage($package, $basePath, $srcPaths, $libPaths);
         }
         
         self::buildXml($composer, $srcPaths, $libPaths);
     }
     
     
-    protected static function getPaths($package, $basePath, &$srcPaths, &$libPaths)
+    protected static function getPackage($package, $basePath, &$srcPaths, &$libPaths)
     {
         $config = $package->getExtra();
+        $basePath = $basePath."/".$package->getName()."/";
         
         if(isset($config["as-source-path"]))
         {
-            $path = $basePath."/".$package->getName()."/".$config["as-source-path"];
-            $path = str_replace("/", DIRECTORY_SEPARATOR, $path);
-            $srcPaths[] = $path;
+            self::addPaths($config["as-source-path"], $basePath, $srcPaths);
         }
         
         if(isset($config["as-lib"]))
         {
-            $path = $basePath."/".$package->getName()."/".$config["as-lib"];
-            $path = str_replace("/", DIRECTORY_SEPARATOR, $path);
-            $libPaths[] = $path;
+            self::addPaths($config["as-lib"], $basePath, $srcPaths);
         }
     }
     
-     protected static function buildXml(Composer $composer, $srcPaths, $libPaths)
+    protected static function addPaths($paths, $basePath, &$result)
+    {
+        
+        if(!is_array($paths))
+        {
+            $paths = [$paths];
+        }
+        
+        foreach($paths as $path)
+        {
+            $path = $basePath.$path;
+            $path = str_replace("/", DIRECTORY_SEPARATOR, $path);
+            $result[] = $path;   
+        }
+        
+    }
+    
+    protected static function buildXml(Composer $composer, $srcPaths, $libPaths)
     {
         if(sizeof($srcPaths) == 0 && sizeof($libPaths)==0)
         {
