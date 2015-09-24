@@ -80,7 +80,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         
         if(isset($config["as-lib"]))
         {
-            self::addPaths($config["as-lib"], $basePath, $srcPaths);
+            self::addPaths($config["as-lib"], $basePath, $libPaths);
         }
     }
     
