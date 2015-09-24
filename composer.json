@@ -1,0 +1,21 @@
+{
+    "name": "jeroendelau/actionscript-composer",
+    "description": "Composer plugin that downloads action script libraries and creates a build config xml for the actionscript compiler",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeroen de Lau",
+            "email": "jeroen.delau@gmail.com"
+        }
+    ],
+	"require": {
+        "composer-plugin-api": "^1.0"
+    },
+	"require-dev": {
+        "composer/composer": "~1.0@dev"
+    },
+	"extra": {
+        "class": "ActionscriptComposer\\Plugin"
+    }
+}
